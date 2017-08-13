@@ -80,7 +80,58 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
   line-height: 1.2;
   font-weight: 300;
   word-wrap:break-word;
-  font-family: 'Open Sans', helvetica, arial, sans-serif;
+}
+
+.modal-backdrop.in {
+  filter: alpha(opacity=50);
+  opacity: .5;
+}
+
+.modal .modal-dialog {
+  max-width: 380px;
+}
+
+.modal .modal-dialog .modal-content {
+  border:.1rem solid #dfdfdf;
+}
+
+.modal .modal-header {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.modal .modal-body {
+  text-align: center;
+  padding-top: 0;
+  padding-bottom: 2.8rem;
+}
+
+.modal .modal-body img {
+  max-width: 140px;
+  border: none;
+  margin-bottom: 1.4rem;
+}
+
+.modal .modal-body h2 {
+  color:#404a51;
+  margin:.2rem 0 .5rem 0;
+  line-height: 1;
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.modal .modal-body p {
+  color:#888e92;
+  margin: 0 0 .4rem 0;
+  font-size: .9rem;
+  line-height: 1.2;
+  font-weight: 300;
+  word-wrap:break-word;
+}
+
+.modal .modal-body hr {
+  margin-top: 2.8rem;
+  margin-bottom: 2.8rem;
 }
 
 
@@ -243,8 +294,27 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
 
     </div>
 
-
   </div>
+  <div id="exampleModalLive" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" style="display: block;">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">&nbsp;<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+        <div class="modal-body">
+          <img class="employee-thumbnail rounded-circle img-thumbnail" src="http://1.bp.blogspot.com/-HnKwckAUqWY/UZ9l9D-RjMI/AAAAAAAAAUQ/spBOysn6Now/s1600/noprofileimage.gif" border="0" />
+          <div class="employee-information " >
+            <h2 class="employee-name" >Haleigh Macciarella</h2>
+            <p class="employee-email" >dtucker@yakitri.edu</p>
+            <p class="employee-city" >Chicago</p>
+            <hr />
+            <p class="phone">123-456-7890</p>
+            <p class="address">851 Scoville Plymouth, WV, 83814</p>
+            <p class="birthday">Birthday: <span class="birthday-date">01/04/85</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="modal-backdrop fade in"></div>
 </body>
 </html>
 
