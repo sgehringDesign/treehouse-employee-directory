@@ -7,6 +7,8 @@
   <title>Employee Directory</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
+
 <style>
 
 /* BRANDING & UI */
@@ -164,8 +166,14 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
         <h1>Awesome Startup Employee Directory</h1>
       </div>
     </div>
+    
+    <div class="row">
+      <div id="feed" class="col-sm-12 col">
+        
+      </div>
+    </div>
 
-    <div class="row employees row-eq-height">
+    <!--<div id="feed" class="row employees row-eq-height">
 
       <div class="col-sm-12 col-md-4 employee-column">
         <a class="row employee-row" href="#haleigh-macciarella">
@@ -292,10 +300,10 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
         </a>
       </div>
 
-    </div>
+    </div>-->
 
   </div>
-  <div id="exampleModalLive" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" style="display: block;">
+  <!--<div id="exampleModalLive" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" style="display: block;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">&nbsp;<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
@@ -314,7 +322,305 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
       </div>
     </div>
   </div>
-  <div class="modal-backdrop fade in"></div>
+  <div class="modal-backdrop fade in"></div>-->
+
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+
+  <script>
+
+
+    function Modal(options) {
+
+      var _ = {}
+
+      _.state = 0;
+      _.id = "";
+      _.classname = "";
+      _.DomElement = "";
+
+      _.metadata = {
+        hash: "",
+        name: "",
+        email: "",
+        city: "",
+        phone: "",
+        address: "",
+        birthday: ""
+      };
+
+      _.merge = function (options){
+        for (var attrname in options) { 
+          this[attrname] = options[attrname];
+        }
+      }
+      _.merge(options);
+
+      _.ui = function (options){
+        
+      }
+
+      _.render = function (options){
+        
+      }
+      
+      /* public methods  */
+      this.get = function(name) {
+        return  _[name];
+      }
+
+      this.set = function (name, value){
+        _[name] = value;
+      }
+
+      this.setMetadata = function (name, value){
+        _.metadata[name] = value;
+      }
+
+      this.open = function (options){
+        
+      }
+
+      this.close = function (options){
+        
+      }
+
+      this.remove = function (options){
+        
+      }
+  
+
+    }
+
+
+    function Profile(options) {
+
+      console.groupCollapsed('Profile Object');
+
+      let _ = {}
+
+      _.state = 0;
+      _.metadata = {};
+
+      $.extend( _.metadata, options );
+
+      _.capitalizeFirstLetter =function(string) {
+        return string.charAt(0).toUpperCase() + string.slice(1);
+      }
+
+      this.get = function(name, child) {
+        child = child || false;
+
+        if(!child) {
+          return  _.metadata[name];
+        } else {
+          return  _.metadata[name][child];
+        }
+
+      }
+
+      this.getName = function(name) {
+        return  _.capitalizeFirstLetter(_.metadata['name']['first']) + ' ' + _.capitalizeFirstLetter(_.metadata['name']['last']);
+      }
+
+      this.getHash = function() {
+        return  '#'+_.metadata['name']['first'].toLowerCase() + '-' + _.metadata['name']['last'].toLowerCase();
+      }
+
+      this.getBirthday = function() {
+        let birthday = new Date(_.metadata['dob']);
+        return ('0' + birthday.getDate()).slice(-2) + '/' + ('0' + (birthday.getMonth()+1)).slice(-2) + '/' + birthday.getFullYear();
+      }
+
+      this.getAddress = function() {
+        return _.metadata['location']['street'] + ', ' + _.metadata['location']['city'] + ', ' + _.metadata['location']['postcode'];
+      }
+
+      console.log(this);
+      console.log(_.metadata);
+
+      console.groupEnd();
+
+    }
+
+
+    function Profiles(total) {
+
+      console.groupCollapsed('Profiles Object');
+      this.total = total;
+
+      var _ = {}
+      _.url = "https://randomuser.me/api/?results=" + this.total;
+      _.dataType = "json";
+
+      _.cards = new Array();
+
+      this.getProfiles = function() {
+        $.ajax({
+          url: _.url,
+          dataType: _.dataType,
+          success: function(data) {
+
+            console.groupCollapsed('Profiles: Get Cards Success');
+
+            for (var i=0,  l=data.results.length; i < l; i++) {
+              _.cards.push( new Profile(data.results[i]) );
+            }
+
+            console.log( '----' );
+            console.log( _.cards );
+            console.log( '----' );
+
+            this.total = data.length;
+
+            console.groupEnd();
+
+          }
+          
+        });
+      }
+
+      this.getProfile = function(i) {
+
+        //console.log( _.cards );
+
+        return _.cards[i];
+      }
+
+      this.getProfiles(); 
+
+      console.groupEnd();
+
+    }
+
+
+    function FeedProfiles( total ) {
+      
+      console.groupCollapsed('FeedProfiles Object');
+
+      let _ = {}
+      this.total = total;
+
+      _.profiles = new Profiles(total);
+      _.feedwrapper = $('#feed');
+
+      _.modalBackground = $('<div>').addClass('modal-backdrop fade in');
+      _.modalBackground.click(function() {
+        this.remove();
+      });
+
+      this.getCard = function(options) {
+
+        /*
+        <div class="col-sm-12 col-md-4 employee-column">
+          <a class="row employee-row" href="#haleigh-macciarella">
+            <div class="col-sm-12 col-md-4 employee-thumbnail">
+              <img class="employee-thumbnail rounded-circle img-thumbnail" src="http://1.bp.blogspot.com/-HnKwckAUqWY/UZ9l9D-RjMI/AAAAAAAAAUQ/spBOysn6Now/s1600/noprofileimage.gif" border="0" />
+            </div>
+            <div class="col-sm-12 col-md-8 employee-information " >
+              <h2 class="employee-name" >Haleigh Macciarella</h2>
+              <p  class="employee-email" >dtucker@yakitri.edu</p>
+              <p  class="employee-city" >Chicago</p>
+            </div>
+          </a>
+        </div>
+        */
+
+        let card    = $('<div>').addClass('col-sm-12 col-md-4 employee-column');
+        let cardRow = $('<a>').addClass('row employee-row').attr('href', options.hash);
+
+        cardRow.click(function() {
+          event.preventDefault();
+          console.log( "Handler for .click() called." );
+          $("body").append(_.modalBackground);
+        });
+
+        let cardColumnImg = $('<div>').addClass('col-sm-12 col-md-4 employee-thumbnail');
+        let cardImg = $('<img>').addClass('employee-thumbnail rounded-circle img-thumbnail').attr("src", options.src);
+
+        let cardColumnInfo = $('<div>').addClass('col-sm-12 col-md-8 employee-information');
+
+        let cardInfoName = $('<h2>').addClass('employee-name').html(options.name);
+        let cardInfoEmail = $('<p>').addClass('employee-email').html(options.email);
+        let cardInfoCity = $('<p>').addClass('employee-city').html(options.city);
+
+        cardColumnImg.append(cardImg);
+        cardColumnInfo.append(cardInfoName);
+        cardColumnInfo.append(cardInfoEmail);
+        cardColumnInfo.append(cardInfoCity);
+
+        cardRow.append(cardColumnImg);
+        cardRow.append(cardColumnInfo);
+
+        card.append(cardRow);
+
+        console.log(card)
+
+        return card;
+
+      }
+
+
+      this.renderFeed = function() {
+
+        console.groupCollapsed('renderFeed() Method');
+
+        let profile;
+        let cardOptions;
+        let row;
+        let rowCount = 0;
+
+        for (i = 0; i < this.total; i++) {
+
+          if (rowCount === 0) {
+            row = $('<div>').addClass('row employees row-eq-height');
+          }
+
+          profile = _.profiles.getProfile(i);
+          console.log( profile );
+
+          cardOptions = {
+            'name': profile.getName(),
+            'email': profile.get('email'),
+            'city': profile.get('location', 'city'),
+            'src': profile.get('picture', 'large'),
+            'hash': profile.getHash()
+          }
+
+          row.append( this.getCard( cardOptions ) );
+
+          rowCount ++;
+          
+          if (rowCount === 3) {
+            $( _.feedwrapper ).append( row );
+            rowCount = 0;
+          }
+
+        }
+
+        console.groupEnd();
+
+      }
+
+    }
+
+
+    //let card = new Profiles();
+    let test = new FeedProfiles(10);
+
+    $( document ).ajaxComplete(function() {
+      test.renderFeed();
+    });
+
+
+
+    $(function() {
+
+     
+    });
+
+  </script>
 </body>
 </html>
 
