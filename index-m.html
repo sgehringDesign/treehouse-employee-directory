@@ -87,6 +87,12 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
 .modal-backdrop.in {
   filter: alpha(opacity=50);
   opacity: .5;
+  display: none;
+}
+
+#modal-backdrop,
+#modal-profile {
+  display: none!important;
 }
 
 .modal .modal-dialog {
@@ -303,26 +309,35 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
     </div>-->
 
   </div>
-  <!--<div id="exampleModalLive" class="modal fade show" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" style="display: block;">
+
+
+  <div id="modal-profile" class="modal fade hide" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" style="display: block;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">&nbsp;<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+        <div class="modal-header">
+          &nbsp;
+          <button id="modal-button-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
         <div class="modal-body">
-          <img class="employee-thumbnail rounded-circle img-thumbnail" src="http://1.bp.blogspot.com/-HnKwckAUqWY/UZ9l9D-RjMI/AAAAAAAAAUQ/spBOysn6Now/s1600/noprofileimage.gif" border="0" />
+          <img id="modal-img" class="employee-thumbnail rounded-circle img-thumbnail" src="http://1.bp.blogspot.com/-HnKwckAUqWY/UZ9l9D-RjMI/AAAAAAAAAUQ/spBOysn6Now/s1600/noprofileimage.gif" border="0" />
           <div class="employee-information " >
-            <h2 class="employee-name" >Haleigh Macciarella</h2>
-            <p class="employee-email" >dtucker@yakitri.edu</p>
-            <p class="employee-city" >Chicago</p>
+            <h2 id="modal-employee-name" class="employee-name" ></h2>
+            <p  id="modal-employee-email" class="employee-email" ></p>
+            <p  id="modal-employee-city" class="employee-city" ></p>
             <hr />
-            <p class="phone">123-456-7890</p>
-            <p class="address">851 Scoville Plymouth, WV, 83814</p>
-            <p class="birthday">Birthday: <span class="birthday-date">01/04/85</span></p>
+            <p id="modal-employee-phone" class="phone"></p>
+            <p id="modal-employee-address" class="address"></p>
+            <p class="birthday">Birthday: <span id="modal-employee-birth-date" class="birthday-date"></span></p>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="modal-backdrop fade in"></div>-->
+
+  <div id="modal-backdrop" class="modal-backdrop fade out"></div>
+
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
@@ -336,60 +351,45 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
       var _ = {}
 
       _.state = 0;
-      _.id = "";
-      _.classname = "";
-      _.DomElement = "";
+      _.valid = 0;
 
-      _.metadata = {
-        hash: "",
-        name: "",
-        email: "",
-        city: "",
-        phone: "",
-        address: "",
-        birthday: ""
+      _.data = {
+        img: '',
+        name: '',
+        email: '',
+        city: '',
+        phone: '',
+        address: '',
+        birthday: '',
       };
 
-      _.merge = function (options){
-        for (var attrname in options) { 
-          this[attrname] = options[attrname];
-        }
-      }
-      _.merge(options);
+      /*
+      _.wrapper = $('#modal-profile');
+      _.close = $('#modal-button-close');
+      _.img = $('#modal-img');
+      _.name = $('#modal-employee-name');
+      _.email = $('#modal-employee-email');
+      _.city = $('#modal-employee-city');
+      _.phone = $('#modal-employee-phone');
+      _.address = $('#modal-employee-address');
+      _.birthdayDate = $('#modal-employee-birth-date');
+      _.background = $('#modal-backdrop');
+      */
 
-      _.ui = function (options){
-        
-      }
+      this.get = function (profile){
+        //!!!!!STEVE NEED TO BUILD PROFILE GET
+        console.log(profile);
 
-      _.render = function (options){
-        
-      }
-      
-      /* public methods  */
-      this.get = function(name) {
-        return  _[name];
-      }
+        //HTML BUILD OUT HERE!!!!!!!!!!
 
-      this.set = function (name, value){
-        _[name] = value;
-      }
 
-      this.setMetadata = function (name, value){
-        _.metadata[name] = value;
-      }
 
-      this.open = function (options){
-        
       }
 
       this.close = function (options){
         
       }
 
-      this.remove = function (options){
-        
-      }
-  
 
     }
 
@@ -494,7 +494,6 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
 
     }
 
-
     function FeedProfiles( total ) {
       
       console.groupCollapsed('FeedProfiles Object');
@@ -509,6 +508,14 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
       _.modalBackground.click(function() {
         this.remove();
       });
+
+      _.modal = new Modal();
+
+      _.getCardId = function (classname){
+        let regex = /-(?:)?\d+/;  //reg ex for finding "-1234"
+        let found = classname.match(regex);
+        return found[0].substr(1); //return number
+      }
 
       this.getCard = function(options) {
 
@@ -528,12 +535,17 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
         */
 
         let card    = $('<div>').addClass('col-sm-12 col-md-4 employee-column');
-        let cardRow = $('<a>').addClass('row employee-row').attr('href', options.hash);
+        let cardRow = $('<a>').addClass('row employee-row id-'+ options.id).attr('href', options.hash);
 
         cardRow.click(function() {
           event.preventDefault();
-          console.log( "Handler for .click() called." );
+          let id = _.getCardId($(this).attr('class'));
+          let profile = _.profiles.getProfile(id); 
+          
+          //!!!!!STEVE NEED TO BUILD PROFILE GET
+          $("body").append(_.modalDialog.get(profile);
           $("body").append(_.modalBackground);
+
         });
 
         let cardColumnImg = $('<div>').addClass('col-sm-12 col-md-4 employee-thumbnail');
@@ -585,7 +597,8 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
             'email': profile.get('email'),
             'city': profile.get('location', 'city'),
             'src': profile.get('picture', 'large'),
-            'hash': profile.getHash()
+            'hash': profile.getHash(),
+            'id': i
           }
 
           row.append( this.getCard( cardOptions ) );
