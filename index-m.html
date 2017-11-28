@@ -95,6 +95,7 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
 
 .modal {
   display: block;
+  pointer-events: none;
 }
 
 .modal.fade {
@@ -346,6 +347,24 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
       _.background = 'modal-backdrop';
 
       _.html = '';
+      
+       _.html 
+
+      _.closeModal = function (){
+
+        $('#'+_.background).removeClass('in');
+        $('#'+_.wrapper).removeClass('show');
+
+        setTimeout(function() {
+          $('#'+_.wrapper).remove();
+          $('#'+_.background).remove();
+        }, 1000);
+
+      }
+
+      this.closeModal = function (){
+        _.closeModal();
+      }
 
       this.openModal = function (profile){
         
@@ -374,14 +393,29 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
                     '</div>'+
                   '</div>'+
                   '<div id="'+ _.background +'" class="modal-backdrop fade"></div>';
-                  
+
           $('body').append(_.html);
+
+         
 
           setTimeout(function() {
             $('#'+_.background).addClass('in');
             $('#'+_.wrapper).addClass('show');
-          }, 5);
 
+            $('#'+_.close).click(function() {
+              event.preventDefault();
+              _.closeModal();
+            });
+            
+            console.log($('#'+_.background));
+
+            $('#'+_.background).click(function() {
+              event.preventDefault();
+              console.log(0);
+              _.closeModal();
+            });
+            
+          }, 5);
 
         return _.html;
         
