@@ -141,7 +141,7 @@
       setTimeout(function() {
         $('#'+_.wrapper).remove();
         $('#'+_.background).remove();
-      }, 1000);
+      }, 600);
 
     }
 
@@ -164,7 +164,7 @@
                         '<img id="'+ _.img +'" class="employee-thumbnail rounded-circle img-thumbnail" border="0" src="'+profile.get('picture', 'large')+'" />'+
                         '<div class="employee-information " >'+
                           '<h2 id="'+ _.name +'" class="employee-name" >'+ profile.getName() +'</h2>'+
-                          '<p  id="'+ _.email +'" class="employee-email" >'+ profile.get('email') +'</p>'+
+                          '<p  id="'+ _.email +'" class="employee-email" ><a href="mailto:'+profile.get('email')+'">'+ profile.get('email') +'</a></p>'+
                           '<p  id="'+ _.city +'" class="employee-city" >'+ profile.get('location','city') +'</p>'+
                           '<hr />'+
                           '<p id="'+ _.phone +'" class="phone">'+ profile.get('phone') +'</p>'+
@@ -174,29 +174,29 @@
                       '</div>'+
                     '</div>'+
                   '</div>'+
-                '</div>'+
-                '<div id="'+ _.background +'" class="modal-backdrop fade"></div>';
+                  '<div id="'+ _.background +'" class="modal-backdrop fade"></div>'+
+                '</div>';
+                
 
         $('body').append(_.html);
 
+        $('#'+_.background).addClass('in');
+        
         setTimeout(function() {
-          $('#'+_.background).addClass('in');
           $('#'+_.wrapper).addClass('show');
-
-          $('#'+_.close).click(function() {
+          
+          $('#'+_.close).click(function(event) {
+            event.preventDefault();
+            _.closeModal();
+          });
+  
+          $('#'+_.background).click(function(event) {
             event.preventDefault();
             _.closeModal();
           });
           
-          console.log($('#'+_.background));
-
-          $('#'+_.background).click(function() {
-            event.preventDefault();
-            console.log(0);
-            _.closeModal();
-          });
-          
-        }, 5);
+        }, 100 );
+        
 
       return _.html;
       
@@ -253,7 +253,7 @@
       let card    = $('<div>').addClass('col-sm-12 col-md-4 employee-column');
       let cardRow = $('<a>').addClass('row employee-row id-'+ options.id).attr('href', options.hash);
 
-      cardRow.click(function() {
+      cardRow.click(function(event) {
         event.preventDefault();
         let id = _.getCardId($(this).attr('class'));
         let profile = _.profiles.getProfile(id); 

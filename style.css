@@ -72,7 +72,7 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
 }
 
 .modal-backdrop.fade {
-  /*transition-delay: 1s;*/
+  transition-delay: .5s;
 }
 
 .modal-backdrop.in {
@@ -82,15 +82,16 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
 
 .modal {
   display: block;
-  pointer-events: none;
+  /*pointer-events: none;*/
 }
 
 .modal.fade {
-  transition-delay: .2s;
+  transition-delay: .1s;
 }
 
 .modal .modal-dialog {
   max-width: 380px;
+  z-index: 1041;
 }
 
 .modal .modal-dialog .modal-content {
@@ -129,6 +130,16 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
   line-height: 1.2;
   font-weight: 300;
   word-wrap:break-word;
+}
+
+.modal .modal-body p a {
+  text-decoration: underline solid transparent;
+  transition: text-decoration .5s ease;
+  color:#888e92;
+}
+
+.modal .modal-body p a:hover {
+  text-decoration: underline solid Currentcolor;
 }
 
 .modal .modal-body hr {
