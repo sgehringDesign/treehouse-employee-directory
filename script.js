@@ -333,10 +333,8 @@
 
 
 
-
-
   //let card = new Profiles();
-  let test = new FeedProfiles(10);
+  let test = new FeedProfiles(12);
 
   $( document ).ajaxComplete(function() {
     test.renderFeed();
