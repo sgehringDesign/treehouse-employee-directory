@@ -1,8 +1,43 @@
 
 
-/**
- * Profile Object
- */
+
+// PROFILE OBJECT ________________________________________________________________________________
+    // -- arguments: options is an individual employee meta data from the employee API.
+
+    // - public properties
+    // -- name (string): "x" or "o"
+
+    // - private properties
+    // -- _.state (int): (0 or 1)
+    // -- _.metadata (ARRAY): array of each employee data from the API
+
+
+    // - public methods
+
+    // -- get(name, child) : 
+    // -- arguments:
+    // -- -- name: argument is the key value to get the private property 
+    // -- -- child: if there is a child key value for to grab from the returned array in the employee API
+
+    // -- getName() : 
+    // -- gets the employee name from the API array.
+
+    // -- getHash() : 
+    // -- gets a hash value of the employee name for bookmarking the URL
+
+    // -- getBirthday() : 
+    // -- gets the birthday value formated to the design spec
+
+    // -- getAddress() : 
+    // -- gets the address formated to the design spec
+
+
+    // - private methods
+
+    // -- _.capitalizeFirstLetter(string) : 
+    // -- arguments:
+    // -- -- name: argument is the key value to get the private property 
+
 
   function Profile(options) {
 
@@ -15,7 +50,7 @@
 
     $.extend( _.metadata, options );
 
-    _.capitalizeFirstLetter =function(string) {
+    _.capitalizeFirstLetter = function(string) {
       return string.charAt(0).toUpperCase() + string.slice(1);
     }
 
@@ -30,7 +65,7 @@
 
     }
 
-    this.getName = function(name) {
+    this.getName = function() {
       return  _.capitalizeFirstLetter(_.metadata['name']['first']) + ' ' + _.capitalizeFirstLetter(_.metadata['name']['last']);
     }
 
@@ -55,6 +90,42 @@
   }
 
 
+
+// PROFILE COLLECTIONS OBJECT ________________________________________________________________________________
+
+    // - public properties
+    // -- name (string): "x" or "o"
+
+    // - private properties
+    // -- _.state (int): (0 or 1)
+    // -- _.metadata (ARRAY): array of each employee data from the API
+
+
+    // - public methods
+
+    // -- get(name, child) : 
+    // -- arguments:
+    // -- -- name: argument is the key value to get the private property 
+    // -- -- child: if there is a child key value for to grab from the returned array in the employee API
+
+    // -- getName() : 
+    // -- gets the employee name from the API array.
+
+    // -- getHash() : 
+    // -- gets a hash value of the employee name for bookmarking the URL
+
+    // -- getBirthday() : 
+    // -- gets the birthday value formated to the design spec
+
+    // -- getAddress() : 
+    // -- gets the address formated to the design spec
+
+
+    // - private methods
+
+    // -- _.capitalizeFirstLetter(string) : 
+    // -- arguments:
+    // -- -- name: argument is the key value to get the private property 
 
 
 
