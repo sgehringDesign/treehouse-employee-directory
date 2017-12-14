@@ -14,22 +14,24 @@
     // -- arguments:
     // -- -- name: argument is the key value to get the private property 
     // -- -- child: if there is a child key value for to grab from the returned array in the employee API
-    
+
     // -- returns:
     // -- -- The value from _.meta property.
 
 
     // -- getName() : 
-    // -- gets the employee name from the _.meta property
+    // -- returns the employee name from the _.meta property
 
     // -- getHash() : 
-    // -- gets a hash value of the employee name for bookmarking the URL
+    // -- returns a hash value of the employee name for bookmarking the URL
 
     // -- getBirthday() : 
-    // -- gets the birthday value formated to the design spec
+    // -- returns the birthday value formated to the design spec
 
     // -- getAddress() : 
-    // -- gets the address formated to the design spec
+    // -- returns the address formated to the design spec
+
+
 
 
     // - private methods
