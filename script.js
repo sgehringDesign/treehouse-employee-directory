@@ -77,14 +77,13 @@ $(function() {
       }
 
       this.getBirthday = function() {
-        let birthday = new Date(_.metadata['dob']);
-       
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        console.log(_.metadata['dob'])
-        console.log(birthday)
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        
-        return ('0' + birthday.getDate()).slice(-2) + '/' + ('0' + (birthday.getMonth()+1)).slice(-2) + '/' + birthday.getFullYear();
+
+        let birthday_raw = _.metadata['dob'].split(" ");
+        let date = birthday_raw[0].split("-");
+        let birthday = new Date(date[0], date[1]-1, date[2]);
+
+        return (('0' + (birthday.getMonth()+1)).slice(-2) + '/' + ('0' + birthday.getDate()).slice(-2)) + '/' + birthday.getFullYear();
+
       }
 
       this.getAddress = function() {
