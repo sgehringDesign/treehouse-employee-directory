@@ -4,9 +4,6 @@
 // PROFILE OBJECT ________________________________________________________________________________
     // -- arguments: options is an individual employee meta data from the employee API.
 
-    // - public properties
-    // -- name (string): "x" or "o"
-
     // - private properties
     // -- _.state (int): (0 or 1)
     // -- _.metadata (ARRAY): array of each employee data from the API
