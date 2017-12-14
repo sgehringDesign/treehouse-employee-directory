@@ -5,9 +5,8 @@
     // -- arguments: options is an individual employee meta data from the employee API.
 
     // - private properties
-    // -- _.state (int): (0 or 1)
+    // -- _.state (int): (0 or 1) 
     // -- _.metadata (ARRAY): array of each employee data from the API
-
 
     // - public methods
 
@@ -15,6 +14,10 @@
     // -- arguments:
     // -- -- name: argument is the key value to get the private property 
     // -- -- child: if there is a child key value for to grab from the returned array in the employee API
+    
+    // -- returns:
+    // -- -- The value from _.meta property.
+
 
     // -- getName() : 
     // -- gets the employee name from the API array.
@@ -94,8 +97,8 @@
     // -- name (string): "x" or "o"
 
     // - private properties
-    // -- _.state (int): (0 or 1)
-    // -- _.metadata (ARRAY): array of each employee data from the API
+    // -- _.state (int): (0 or 1) for future use to detect if data loaded
+    // -- _.metadata (OBJECT): object of each employee data from the API
 
 
     // - public methods
@@ -105,17 +108,23 @@
     // -- -- name: argument is the key value to get the private property 
     // -- -- child: if there is a child key value for to grab from the returned array in the employee API
 
+    // -- returns
+    // -- -- a object 
+
     // -- getName() : 
-    // -- gets the employee name from the API array.
+    // -- -- gets the employee name from the API array.
+
+    // -- returns
+    // -- -- a object 
 
     // -- getHash() : 
-    // -- gets a hash value of the employee name for bookmarking the URL
+    // -- -- gets a hash value of the employee name for bookmarking the URL
 
     // -- getBirthday() : 
-    // -- gets the birthday value formated to the design spec
+    // -- -- gets the birthday value formated to the design spec
 
     // -- getAddress() : 
-    // -- gets the address formated to the design spec
+    // -- -- gets the address formated to the design spec
 
 
     // - private methods
