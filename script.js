@@ -2,6 +2,7 @@
 
 
 // PROFILE OBJECT ________________________________________________________________________________
+
     // -- arguments: options is an individual employee meta data from the employee API.
 
     // - private properties
@@ -10,7 +11,7 @@
 
     // - public methods
 
-    // -- get(name, child) : 
+    // -- get(name, child)
     // -- arguments:
     // -- -- name: argument is the key value to get the private property 
     // -- -- child: if there is a child key value for to grab from the returned array in the employee API
@@ -19,18 +20,17 @@
     // -- -- The value from _.meta property.
 
 
-    // -- getName() : 
+    // -- getName()
     // -- returns the employee name from the _.meta property
 
-    // -- getHash() : 
+    // -- getHash()
     // -- returns a hash value of the employee name for bookmarking the URL
 
-    // -- getBirthday() : 
+    // -- getBirthday()
     // -- returns the birthday value formated to the design spec
 
-    // -- getAddress() : 
+    // -- getAddress()
     // -- returns the address formated to the design spec
-
 
 
 
@@ -38,7 +38,7 @@
 
     // -- _.capitalizeFirstLetter(string) : 
     // -- arguments:
-    // -- -- name: argument is the key value to get the private property 
+    // -- -- returns string value capitalized becuase the names in the API are all lower case.
 
 
   function Profile(options) {
@@ -93,53 +93,46 @@
 
 
 
-// PROFILE COLLECTIONS OBJECT ________________________________________________________________________________
+// PROFILES COLLECTION OBJECT ________________________________________________________________________________
 
-    // - public properties
-    // -- name (string): "x" or "o"
+    // -- arguments: total allows you to set the total items rendered on the page
 
     // - private properties
-    // -- _.state (int): (0 or 1) for future use to detect if data loaded
-    // -- _.metadata (OBJECT): object of each employee data from the API
-
+    // -- _.url (string): url to the api
+    // -- _.dataType (string): data type rturned from the api
+    // -- _.cards (array): a collection of profile objects
 
     // - public methods
 
-    // -- get(name, child) : 
+    // -- get(name, child)
     // -- arguments:
     // -- -- name: argument is the key value to get the private property 
     // -- -- child: if there is a child key value for to grab from the returned array in the employee API
 
-    // -- returns
-    // -- -- a object 
+    // -- returns:
+    // -- -- The value from _.meta property.
 
-    // -- getName() : 
-    // -- -- gets the employee name from the API array.
 
-    // -- returns
-    // -- -- a object 
+    // -- getName()
+    // -- returns the employee name from the _.meta property
 
-    // -- getHash() : 
-    // -- -- gets a hash value of the employee name for bookmarking the URL
+    // -- getHash()
+    // -- returns a hash value of the employee name for bookmarking the URL
 
-    // -- getBirthday() : 
-    // -- -- gets the birthday value formated to the design spec
+    // -- getBirthday()
+    // -- returns the birthday value formated to the design spec
 
-    // -- getAddress() : 
-    // -- -- gets the address formated to the design spec
+    // -- getAddress()
+    // -- returns the address formated to the design spec
+
 
 
     // - private methods
 
     // -- _.capitalizeFirstLetter(string) : 
     // -- arguments:
-    // -- -- name: argument is the key value to get the private property 
+    // -- -- returns string value capitalized becuase the names in the API are all lower case.
 
-
-
-/**
- * Profiles Collection Object
- */
 
   function Profiles(total) {
 
