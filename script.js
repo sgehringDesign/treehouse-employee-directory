@@ -78,12 +78,11 @@ $(function() {
 
       this.getBirthday = function() {
         let birthday = new Date(_.metadata['dob']);
-       
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        console.log(_.metadata['dob'])
-        console.log(birthday)
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
-        
+
+        //console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+        //console.log(birthday)
+        //console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
+
         return ('0' + birthday.getDate()).slice(-2) + '/' + ('0' + (birthday.getMonth()+1)).slice(-2) + '/' + birthday.getFullYear();
       }
 
