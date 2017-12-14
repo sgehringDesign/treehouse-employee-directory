@@ -338,13 +338,6 @@ $(function() {
       _.profiles = new Profiles(total);
       _.feedwrapper = $('#feed');
 
-  /*
-      _.modalBackground = $('<div>').addClass('modal-backdrop fade in');
-      _.modalBackground.click(function() {
-        this.remove();
-      });
-  */
-
       _.modal = new Modal();
 
       _.getCardId = function (classname){
