@@ -17,7 +17,7 @@
     // -- -- child: if there is a child key value for to grab from the returned array in the employee API
 
     // -- returns:
-    // -- -- The value from _.meta property.
+    // -- -- The value from _.meta property
 
 
     // -- getName()
@@ -104,34 +104,11 @@
 
     // - public methods
 
-    // -- get(name, child)
-    // -- arguments:
-    // -- -- name: argument is the key value to get the private property 
-    // -- -- child: if there is a child key value for to grab from the returned array in the employee API
+    // -- getProfiles()
+    // -- makes a JQUERY AJAX call to API. Then creates a profile object and pushes that object to a _.cards collection
 
-    // -- returns:
-    // -- -- The value from _.meta property.
-
-
-    // -- getName()
-    // -- returns the employee name from the _.meta property
-
-    // -- getHash()
-    // -- returns a hash value of the employee name for bookmarking the URL
-
-    // -- getBirthday()
-    // -- returns the birthday value formated to the design spec
-
-    // -- getAddress()
-    // -- returns the address formated to the design spec
-
-
-
-    // - private methods
-
-    // -- _.capitalizeFirstLetter(string) : 
-    // -- arguments:
-    // -- -- returns string value capitalized becuase the names in the API are all lower case.
+    // -- getProfile(i)
+    // -- get a specific profile object from the _.cards collection
 
 
   function Profiles(total) {
