@@ -156,17 +156,43 @@
 
 
 
+// MODAL DIALOG OBJECT ________________________________________________________________________________
 
-/**
- * Modal Dialog Object
- */
+    // -- arguments: total allows you to set the total items rendered on the page
 
-  function Modal(options) {
+    // - private properties
+    // -- _.wrapper (string): DOM id for the profile wrapper
+    // -- _.close (string): DOM id for close button
+    // -- _.img (string): DOM id for employee image 
+    // -- _.name (string): DOM id for employee name 
+    // -- _.email (string): DOM id for employee email 
+    // -- _.city (string): DOM id for employee city 
+    // -- _.phone (string): DOM id for employee phone 
+    // -- _.address (string): DOM id for employee address
+    // -- _.birthdayDate (string): DOM id for employee birthday
+    // -- _.background (string): DOM id for background
+
+    // -- _.html (string) : string for model dialog when opened
+
+    // - private methods
+
+    // -- _.closeModal() 
+    // -- -- Closes model dialog box and removes from the DOM. For CSS animation I had to use a timer. 
+
+    // - public methods
+
+    // -- closeModal()
+    // -- enables public access to close modal. I put this in private method so it was avaible in the scope of a click event on a DOM element
+
+    // -- openModal(profile)
+    // -- -- requires a profile object get passed. Once passed I build the modal string, attach events, and inject it into the dom.  Then we CSS fade in the elements with a timer
+    
+    // -- -- returns html
+
+
+  function Modal() {
 
     var _ = {}
-
-    _.state = 0;
-    _.valid = 0;
 
     _.wrapper = 'modal-profile';
     _.close = 'modal-button-close';
@@ -378,6 +404,13 @@
     }
 
   }
+
+
+
+
+
+
+
 
 
 
