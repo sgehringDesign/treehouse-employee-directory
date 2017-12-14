@@ -20,7 +20,7 @@
 
 
     // -- getName() : 
-    // -- gets the employee name from the API array.
+    // -- gets the employee name from the _.meta property
 
     // -- getHash() : 
     // -- gets a hash value of the employee name for bookmarking the URL
