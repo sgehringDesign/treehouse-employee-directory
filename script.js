@@ -34,7 +34,6 @@ $(function() {
       // -- returns the address formated to the design spec
 
 
-
       // - private methods
 
       // -- _.capitalizeFirstLetter(string) : 
@@ -208,6 +207,7 @@ $(function() {
       _.city = 'modal-employee-city';
       _.phone = 'modal-employee-phone';
       _.address = 'modal-employee-address';
+      _.country = 'modal-employee-country';
       _.birthdayDate = 'modal-employee-birth-date';
 
       _.background = 'modal-backdrop';
@@ -250,6 +250,7 @@ $(function() {
                             '<hr />'+
                             '<p id="'+ _.phone +'" class="phone">'+ profile.get('phone') +'</p>'+
                             '<p id="'+ _.address +'" class="address">'+ profile.getAddress() +'</p>'+
+                             '<p id="'+ _.country +'" class="address">'+ profile.get('nat') +'</p>'+
                             '<p class="birthday">Birthday: <span id="'+_.birthdayDate+'" class="birthday-date">'+profile.getBirthday()+'</span></p>'+
                           '</div>'+
                         '</div>'+

@@ -166,3 +166,9 @@ div.employee-directory div.employees a.employee-row div.employee-information p {
   }
 
 }
+
+@media screen and (max-width: 576px) {
+  .modal .modal-dialog {
+    max-width: 95%!important;
+  }
+}
